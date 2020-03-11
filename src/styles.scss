@@ -1,1 +1,52 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+
+body {
+    height: 100%;
+    margin: 0;
+    /* font-size: 14px !important; */
+    font-family: 'Lato', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Nuni !important;
+    background-color: #e9ecef !important;
+    text-rendering: optimizeLegibility;
+}
+
+.corona-card {
+    border-radius: 15px !important;
+    box-shadow: 0 0 35px 0 rgba(0, 0, 0, .11) !important;
+}
+
+.btn-green {
+    background-color: #12b886 !important;
+    color: white !important;
+}
+
+.btn-green:hover {
+    background-color: #17ac7f !important;
+}
+
+.bg-green {
+    background-color: #12b886 !important;
+    border-color: #12b886 !important;
+}
+
+.text-green {
+    color: #12b886 !important;
+}
+
+pointer {
+    cursor: pointer;
+}
+
+.corona-border {
+    border: solid #ffffff 1.5px;
+}
+
+.corona-border:hover {
+    /* transform: scale(1.05) translateY(-3px); */
+    transition: ease-in .3s;
+    border: solid #748ee0 1.5px;
+}
+
+
+mat-icon {
+    vertical-align: middle !important;
+}

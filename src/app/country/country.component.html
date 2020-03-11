@@ -1,0 +1,24 @@
+<div class="container-fluid px-5">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb my-4 py-1">
+            <li class="breadcrumb-item active h5 mb-0" aria-current="page">Affected Countries
+                <span class="ml-2 badge badge-primary bg-green">{{ totalCountries }}</span>
+            </li>
+            <div class="ml-auto text-muted">Statistics taken at: <span
+                    class="text-green">{{ statistic_taken_at | date:'medium' }}</span></div>
+        </ol>
+    </nav>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2" *ngFor="let country of countries">
+            <div (click)="onCountryDetails(country.country_name)" class="card corona-card my-2 text-center">
+                <div class="card-body">
+                    <div class="h6 mb-0 text-green"> {{ country.country_name }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

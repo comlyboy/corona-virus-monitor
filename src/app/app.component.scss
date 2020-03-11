@@ -1,0 +1,79 @@
+.navbar {
+    box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.1);
+}
+
+.mat-drawer-backdrop .ng-star-inserted .mat-drawer-shown {
+    visibility: hidden !important;
+}
+
+.containerr {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.containerr .mat-drawer {
+    width: 220px !important;
+}
+
+.containerr {
+    background-color: rgba(234, 235, 239, 0.527) !important;
+}
+
+.sidebar {
+    box-shadow: 0 0.5rem 1rem 0 rgba(44, 51, 73, 0.1);
+}
+
+.sidebar ul {
+    padding-left: 0px;
+}
+
+.sidebar-content {
+    position: relative;
+    overflow: auto;
+    height: 100% !important;
+}
+
+.sidebar a {
+    display: block;
+    padding: 30px 20px;
+    border-bottom: 1px solid rgb(231, 233, 238);
+    text-decoration: none;
+    color: #6c757d;
+}
+
+.current {
+    // background-color: rgba(229, 232, 236, 0.306) !important;
+    color: #12b886 !important;
+    border-right: #12b886 solid 5px;
+}
+
+.sidebar a:hover {
+    color: #12b886;
+    text-decoration: none;
+}
+
+.sidebar li {
+    list-style-type: none;
+}
+
+.sidebar li:last-child a {
+    border-bottom: none;
+}
+
+.sidebar img {
+    max-width: 150px;
+    max-height: auto;
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-bottom: 15px;
+    transition: 3s;
+}
+
+.extra:hover {
+    border-radius: 50% !important;
+    background-color: #edf1fa !important;
+    color: #12b886 !important;
+}
