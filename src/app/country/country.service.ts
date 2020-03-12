@@ -38,7 +38,6 @@ export class CountryService {
         statistic_taken_at: Date
       }>(`${this.API_URL}coronavirus/cases_by_country.php`, this.httpOptions)
       .subscribe(countriesData => {
-        console.log(countriesData);
         this.countries = countriesData.countries_stat;
         this.countriesDataUpdated.next({
           countries: [...this.countries],

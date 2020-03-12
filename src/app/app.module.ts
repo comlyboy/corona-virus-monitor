@@ -5,6 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { AngularMaterialModule } from './shared/material/material.module';
+import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -25,7 +26,7 @@ import { CountryDetailsComponent } from './country/country-details/country-detai
     BrowserAnimationsModule,
     HttpClientModule,
     AngularMaterialModule,
-    // NgxChartsModule,
+    NgxChartsModule,
     // AvatarModule,
     NgCircleProgressModule.forRoot({
       // set defaults here

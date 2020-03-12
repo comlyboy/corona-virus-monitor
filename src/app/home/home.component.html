@@ -13,33 +13,55 @@
 <div class="container-fluid">
     <div class="row">
 
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
             <div class="card corona-card my-2 text-center pointer">
-                <a routerLink="/reports" class="card-body">
-                    <div class="h3 text-danger">{{ totalCases | number }}</div>
+                <div class="card-body">
+                    <div class="h3 text-primary">{{ totalCases | number }}</div>
                     <div class="h6 text-muted">Total Cases</div>
-                </a>
+                </div>
             </div>
         </div>
 
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card corona-card my-2 text-center pointer">
+                <div class="card-body">
+                    <div class="h3 text-green">{{ totalCases | number }}</div>
+                    <div class="h6 text-muted">Total Recovered</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card corona-card my-2 text-center pointer">
+                <div class="card-body">
+                    <div class="h3 text-danger">{{ totalCases | number }}</div>
+                    <div class="h6 text-muted">Total Deaths</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
+            <div class="card corona-card corona-border my-2 text-center pointer">
+                <a routerLink="/countries" class="card-body">
+                    <div class="h3 text-warning">{{ totalCountries | number }}</div>
+                    <div class="h6 text-muted">Countries Affected</div>
+                </a>
+            </div>
+        </div>
 
     </div>
 </div>
 
 
-
 <div class="container-fluid">
-    <div class="row">
-
-        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-2">
-            <div class="card corona-card my-2 text-center pointer">
-                <a routerLink="/reports" class="card-body">
-                    <div class="h3 text-danger">{{ totalCases | number }}</div>
-                    <div class="h6 text-muted">Total Cases</div>
-                </a>
-            </div>
+    <div class="card corona-card my-3">
+        <div class="card-header"></div>
+        <div class="card-body">
+            <ngx-charts-bar-vertical [view]="viewCharts" [scheme]="colorScheme" [results]="country_cases_comparism"
+                [xAxis]="showXAxis" [yAxis]="showYAxis" [legend]="showBarLegend" [roundEdges]="roundEdges"
+                [showXAxisLabel]="showXAxisLabel" [showYAxisLabel]="showYAxisLabel" [xAxisLabel]="xAxisLabel"
+                [yAxisLabel]="yAxisLabel">
+            </ngx-charts-bar-vertical>
         </div>
-
-
     </div>
 </div>

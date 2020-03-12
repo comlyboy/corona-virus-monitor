@@ -1,10 +1,10 @@
 
 export interface ICountry {
     country_name: string;
-    cases: number;
-    deaths: number;
+    cases: any;
+    deaths: any;
     region: number;
-    total_recovered: number;
+    total_recovered: any;
     new_deaths: number;
     new_cases: number;
     serious_critical: number;
