@@ -14,11 +14,14 @@ export class HomeComponent implements OnInit {
   countriesSub: Subscription;
 
   totalCases: number = 0;
+  totalCures: number = 0;
+  totalDeaths: number = 0;
+  totalCountries: number = 0;
 
 
+  deathRatePercentage: number = 0;
 
   countries: ICountry[] = [];
-  totalCountries: number = 0;
   statistic_taken_at: Date;
 
 
@@ -48,18 +51,33 @@ export class HomeComponent implements OnInit {
     public countryService: CountryService,
   ) { }
 
-  
+
 
   summaryDatas(countryArray: ICountry[]) {
     let allCases: number = 0;
     let deaths: number = 0;
-    let heals: number = 0;
+    let cures: number = 0;
 
     countryArray.forEach(d => {
       let convert = Number(d.cases.replace(/\,/g, ''));
       allCases += convert
     });
+
+    countryArray.forEach(d => {
+      let convert = Number(d.total_recovered.replace(/\,/g, ''));
+      cures += convert
+    });
+
+    countryArray.forEach(d => {
+      let convert = Number(d.deaths.replace(/\,/g, ''));
+      deaths += convert
+    });
+
     this.totalCases = allCases;
+    this.totalCures = cures
+    this.totalDeaths = deaths
+
+    this.deathRatePercentage = this.totalCures / this.totalCases * 100
   }
 
 

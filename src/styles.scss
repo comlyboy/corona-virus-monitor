@@ -3,15 +3,16 @@
 body {
     height: 100%;
     margin: 0;
-    /* font-size: 14px !important; */
+    color: rgb(163, 180, 184) !important;
     font-family: 'Lato', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Nuni !important;
-    background-color: #e9ecef !important;
+    background-color: #041834f8 !important;
     text-rendering: optimizeLegibility;
 }
 
 .corona-card {
     border-radius: 15px !important;
-    box-shadow: 0 0 35px 0 rgba(0, 0, 0, .11) !important;
+    background-color: #ebe4e417 !important;
+
 }
 
 .btn-green {
@@ -35,17 +36,6 @@ body {
 pointer {
     cursor: pointer;
 }
-
-.corona-border {
-    border: solid #ffffff 1.5px;
-}
-
-.corona-border:hover {
-    /* transform: scale(1.05) translateY(-3px); */
-    transition: ease-in .3s;
-    border: solid #748ee0 1.5px;
-}
-
 
 mat-icon {
     vertical-align: middle !important;
