@@ -18,7 +18,7 @@
 
         <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2" *ngFor="let country of countries">
             <div (click)="onCountryDetails(country.country_name)" data-toggle="modal" data-target="#exampleModalCenter"
-                class="card corona-card my-2 text-center">
+                class="card corona-card corona-border my-2 text-center">
                 <div class="card-body">
                     <div class="h6 mb-0"> {{ country.country_name }}
                     </div>
@@ -72,7 +72,7 @@
 
                     <div class="col-6">
                         <div class="card corona-card my-2 text-center">
-                            <div class="card-body py-2">
+                            <div class="card-body p-2">
                                 <div class="h5 text-warning">{{ country?.serious_critical }}</div>
                                 <div class="h6 mb-0">Total severe cases</div>
                             </div>
@@ -93,9 +93,6 @@
                             </div>
                         </div>
                     </div>
-
-
-
 
                 </div>
 

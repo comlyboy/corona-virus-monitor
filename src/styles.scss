@@ -18,6 +18,15 @@ a {
     background-color: #1e3049 !important;
 }
 
+.corona-border {
+    border: rgba(0, 0, 255, 0) solid 1.5px !important;
+}
+
+.corona-border:hover {
+    border: #096c4e solid 1.5px !important;
+    transition: ease-in .3s;
+}
+
 .btn-green {
     background-color: #12b886 !important;
     color: white !important;
