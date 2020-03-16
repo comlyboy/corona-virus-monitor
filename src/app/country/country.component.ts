@@ -23,6 +23,7 @@ export class CountryComponent implements OnInit {
 
   deathRatePercentage: number = 0;
 
+  isLoading: boolean = false
   constructor(
     public coronaService: CoronaService,
   ) { }
@@ -37,12 +38,14 @@ export class CountryComponent implements OnInit {
   }
 
   initContents() {
+    this.isLoading = true;
     this.coronaService.getCountries();
     this.countriesSub = this.coronaService.getCountriesUpdateListener()
       .subscribe((customersData: { countries: ICountry[], taken_at: Date }) => {
         this.countries = customersData.countries;
         this.statistic_taken_at = customersData.taken_at;
         this.totalCountries = this.countries.length;
+        this.isLoading = false;
       })
 
   }

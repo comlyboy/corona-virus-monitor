@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   countries: ICountry[] = [];
   statistic_taken_at: Date;
 
+  isLoading: boolean = false;
 
 
   // bar-chart options
@@ -153,7 +154,7 @@ export class HomeComponent implements OnInit {
 
 
   initContents() {
-
+    this.isLoading = true;
     this.coronaService.getCountries();
     this.countriesSub = this.coronaService.getCountriesUpdateListener()
       .subscribe((customersData: { countries: ICountry[], taken_at: Date }) => {
@@ -165,6 +166,8 @@ export class HomeComponent implements OnInit {
         // setTimeout(() => {
         //   this.renderChart();
         // }, 1000);
+        this.isLoading = false;
+
       })
 
   }

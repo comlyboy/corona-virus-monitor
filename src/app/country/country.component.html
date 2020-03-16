@@ -10,8 +10,10 @@
         </ol>
     </nav>
 </div>
+<app-spinner *ngIf="isLoading"></app-spinner>
 
-<div class="container-fluid">
+
+<div *ngIf="!isLoading" class="container-fluid">
     <div class="row">
 
         <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2" *ngFor="let country of countries">
@@ -84,10 +86,10 @@
                             </div>
                             <div class="card-body py-2">
                                 <circle-progress [percent]="deathRatePercentage" [radius]="100" [outerStrokeWidth]="25"
-                                [toFixed]="2" [showSubtitle]="false" [space]="-25" [maxPercent]="100" [innerStrokeWidth]="25"
-                                [outerStrokeColor]="'#dc3545'" [titleColor]="'#dc3545'" [unitsColor]="'#dc3545'"
-                                [innerStrokeColor]="'#edf1fa'" [animation]="true">
-                            </circle-progress>
+                                    [toFixed]="2" [showSubtitle]="false" [space]="-25" [maxPercent]="100"
+                                    [innerStrokeWidth]="25" [outerStrokeColor]="'#dc3545'" [titleColor]="'#dc3545'"
+                                    [unitsColor]="'#dc3545'" [innerStrokeColor]="'#edf1fa'" [animation]="true">
+                                </circle-progress>
                             </div>
                         </div>
                     </div>
