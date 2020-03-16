@@ -7,5 +7,5 @@ export interface ICountry {
     total_recovered: any;
     new_deaths: number;
     new_cases: number;
-    serious_critical: number;
+    serious_critical: any;
 }

@@ -9,6 +9,10 @@ body {
     text-rendering: optimizeLegibility;
 }
 
+a {
+    text-decoration: none !important;
+}
+
 .corona-card {
     border-radius: 15px !important;
     background-color: #ebe4e417 !important;
@@ -28,6 +32,12 @@ body {
     background-color: #12b886 !important;
     border-color: #12b886 !important;
 }
+
+.bg {
+    background-color: #1e3049 !important;
+    border-color: rgb(163, 180, 184) !important;
+}
+
 
 .text-green {
     color: #12b886 !important;

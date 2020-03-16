@@ -112,7 +112,7 @@ export class HomeComponent implements OnInit {
     let allCases: number = 0;
     let deaths: number = 0;
     let cures: number = 0;
-    let totalSevere: number = 0;
+    let severe: number = 0;
 
     countryArray.forEach(d => {
       let convert = Number(d.cases.replace(/\,/g, ''));
@@ -123,7 +123,6 @@ export class HomeComponent implements OnInit {
     countryArray.forEach(d => {
       let convert = Number(d.total_recovered.replace(/\,/g, ''));
       cures += convert
-      console.log(cures);
     });
 
     countryArray.forEach(d => {
@@ -131,20 +130,22 @@ export class HomeComponent implements OnInit {
       deaths += convert
     });
 
+    countryArray.forEach(d => {
+      let convert = Number(d.serious_critical.replace(/\,/g, ''));
+      severe += convert
+    });
+
     this.totalCases = allCases;
     this.totalCures = cures
     this.totalDeaths = deaths
 
-    let sum = this.totalCures + this.totalDeaths
-    totalSevere = this.totalCases - sum;
 
-
-    this.severeRatePercentage = totalSevere / this.totalCases * 100;
+    this.severeRatePercentage = severe / this.totalCases * 100;
     this.deathRatePercentage = this.totalDeaths / this.totalCases * 100;
     this.recoveryRatePercentage = this.totalCures / this.totalCases * 100;
 
 
-    this.countryNames = countryArray.map((item) => item.country_name);
+    // this.countryNames = countryArray.map((item) => item.country_name);
     // this.recoversVisual = a;
     // this.recorvers = countryArray.map((item) => item.total_recovered);
 
