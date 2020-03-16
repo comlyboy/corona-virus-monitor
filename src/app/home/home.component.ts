@@ -3,8 +3,8 @@ import { Subscription } from 'rxjs';
 
 import { Chart } from 'chart.js';
 
-import { CountryService } from '../country/country.service';
 import { ICountry } from '../interfaces/country';
+import { CoronaService } from '../shared/corona.service';
 
 @Component({
   selector: 'app-home',
@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(
-    public countryService: CountryService,
+    public coronaService: CoronaService,
   ) { }
 
   renderChart() {
@@ -153,8 +153,8 @@ export class HomeComponent implements OnInit {
 
   initContents() {
 
-    this.countryService.getCountries();
-    this.countriesSub = this.countryService.getCountriesUpdateListener()
+    this.coronaService.getCountries();
+    this.countriesSub = this.coronaService.getCountriesUpdateListener()
       .subscribe((customersData: { countries: ICountry[], taken_at: Date }) => {
         console.log(customersData.taken_at)
         this.countries = customersData.countries;

@@ -15,13 +15,88 @@
     <div class="row">
 
         <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2" *ngFor="let country of countries">
-            <div (click)="onCountryDetails(country.country_name)" class="card corona-card my-2 text-center">
+            <div (click)="onCountryDetails(country.country_name)" data-toggle="modal" data-target="#exampleModalCenter"
+                class="card corona-card my-2 text-center">
                 <div class="card-body">
                     <div class="h6 mb-0"> {{ country.country_name }}
                     </div>
                     <div class="h6 mb-0 text-green"> {{ country.cases }}
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-green" id="exampleModalCenterTitle">{{ country?.country_name }}</h5>
+                <button type="button" class="close text-light" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="card corona-card my-2 text-center">
+                            <div class="card-body py-2">
+                                <div class="h5 text-primary">{{ country?.cases }}</div>
+                                <div class="h6 mb-0">Total Cases</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="card corona-card my-2 text-center">
+                            <div class="card-body py-2">
+                                <div class="h5 text-green">{{ country?.total_recovered }}</div>
+                                <div class="h6 mb-0">Total recovery</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="card corona-card my-2 text-center">
+                            <div class="card-body py-2">
+                                <div class="h5 text-danger">{{ country?.deaths }}</div>
+                                <div class="h6 mb-0">Total deaths</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="card corona-card my-2 text-center">
+                            <div class="card-body py-2">
+                                <div class="h5 text-warning">{{ country?.serious_critical }}</div>
+                                <div class="h6 mb-0">Total severe cases</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="card corona-card my-2 text-center">
+                            <div class="card-header">
+                                <div class="h5 mb-0">Death rate</div>
+                            </div>
+                            <div class="card-body py-2">
+                                <circle-progress [percent]="deathRatePercentage" [radius]="100" [outerStrokeWidth]="25"
+                                [toFixed]="2" [showSubtitle]="false" [space]="-25" [maxPercent]="100" [innerStrokeWidth]="25"
+                                [outerStrokeColor]="'#dc3545'" [titleColor]="'#dc3545'" [unitsColor]="'#dc3545'"
+                                [innerStrokeColor]="'#edf1fa'" [animation]="true">
+                            </circle-progress>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
             </div>
         </div>
     </div>

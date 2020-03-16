@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { CountryService } from './country.service';
 import { ICountry } from '../interfaces/country';
+import { CoronaService } from '../shared/corona.service';
 
 @Component({
   selector: 'app-country',
@@ -12,25 +12,33 @@ import { ICountry } from '../interfaces/country';
 export class CountryComponent implements OnInit {
   countriesSub: Subscription;
 
+  country: ICountry;
   countries: ICountry[] = [];
   totalCountries: number = 0;
   statistic_taken_at: Date;
 
+  totalCases: number = 0;
+  totalCures: number = 0;
+  totalDeaths: number = 0;
+
+  deathRatePercentage: number = 0;
 
   constructor(
-    public countryService: CountryService,
+    public coronaService: CoronaService,
   ) { }
 
 
   onCountryDetails(countryName: string) {
-    console.log(countryName)
-    let countryDetails = this.countries.find(o => o.country_name === countryName);
-    console.log(countryDetails)
+    this.country = this.countries.find(o => o.country_name === countryName);
+
+    let deaths = Number(this.country.deaths.replace(/\,/g, ''));
+    let cases = Number(this.country.cases.replace(/\,/g, ''));
+    this.deathRatePercentage = deaths / cases * 100;
   }
 
   initContents() {
-    this.countryService.getCountries();
-    this.countriesSub = this.countryService.getCountriesUpdateListener()
+    this.coronaService.getCountries();
+    this.countriesSub = this.coronaService.getCountriesUpdateListener()
       .subscribe((customersData: { countries: ICountry[], taken_at: Date }) => {
         this.countries = customersData.countries;
         this.statistic_taken_at = customersData.taken_at;

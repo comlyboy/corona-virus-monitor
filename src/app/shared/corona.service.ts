@@ -1,14 +1,16 @@
 import { Injectable } from '@angular/core';
+
+import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+
 import { Subject } from 'rxjs';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { ICountry } from '../interfaces/country';
-environment
 
 @Injectable({
   providedIn: 'root'
 })
-export class CountryService {
+export class CoronaService {
 
   private API_URL = environment.API_URL;
   httpOptions = environment.httpOptions;
@@ -45,5 +47,6 @@ export class CountryService {
         });
       });
   }
+
 
 }
