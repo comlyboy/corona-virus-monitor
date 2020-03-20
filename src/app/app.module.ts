@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { CountryComponent } from './country/country.component';
 import { SpinnerComponent } from './shared/components/spinner/spinner.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import { SpinnerComponent } from './shared/components/spinner/spinner.component'
       titleFontSize: '30',
       unitsFontSize: '30',
       animationDuration: 300
-    })
+    }),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
