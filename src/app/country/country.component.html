@@ -12,6 +12,17 @@
 </div>
 <app-spinner *ngIf="isLoading"></app-spinner>
 
+<div *ngIf="!isLoading" class="container">
+    <div class="input-group my-1">
+        <input type="text" class="form-control form-control-lg rounded-0" (change)="onSearchInput($event.target.value)"
+            name="filtersearch" ngModel autocomplete="off" placeholder="Search branch...">
+        <div class="input-group-prepend">
+            <button class="btn btn-handy">
+                Search </button>
+        </div>
+    </div>
+</div>
+
 
 <div *ngIf="!isLoading" class="container-fluid">
     <div class="row">

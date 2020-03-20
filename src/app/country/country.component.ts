@@ -15,6 +15,7 @@ export class CountryComponent implements OnInit {
   country: ICountry;
   countries: ICountry[] = [];
   totalCountries: number = 0;
+  
   statistic_taken_at: Date;
 
   totalCases: number = 0;
@@ -23,10 +24,15 @@ export class CountryComponent implements OnInit {
 
   deathRatePercentage: number = 0;
 
-  isLoading: boolean = false
+  isLoading: boolean = false;
+
   constructor(
     public coronaService: CoronaService,
   ) { }
+
+  onSearchInput(value: string) {
+    console.log(value);
+  };
 
 
   onCountryDetails(countryName: string) {
