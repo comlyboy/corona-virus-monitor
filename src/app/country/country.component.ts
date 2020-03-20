@@ -15,7 +15,7 @@ export class CountryComponent implements OnInit {
   country: ICountry;
   countries: ICountry[] = [];
   totalCountries: number = 0;
-  
+
   statistic_taken_at: Date;
 
   totalCases: number = 0;
@@ -31,7 +31,7 @@ export class CountryComponent implements OnInit {
   ) { }
 
   onSearchInput(value: string) {
-    console.log(value);
+    // console.log(value);
   };
 
 

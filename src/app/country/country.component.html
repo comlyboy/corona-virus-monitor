@@ -13,12 +13,17 @@
 <app-spinner *ngIf="isLoading"></app-spinner>
 
 <div *ngIf="!isLoading" class="container">
-    <div class="input-group my-1">
-        <input type="text" class="form-control form-control-lg rounded-0" (change)="onSearchInput($event.target.value)"
-            name="filtersearch" ngModel autocomplete="off" placeholder="Search branch...">
-        <div class="input-group-prepend">
-            <button class="btn btn-handy">
-                Search </button>
+    <div class="card corona-card my-2">
+        <div class="card-body py-2 px-5">
+            <div class="input-group my-1">
+                <input type="text" class="form-control form-control-lg rounded-0 bg-transparent border-success"
+                    (change)="onSearchInput($event.target.value)" name="filtersearch" ngModel autocomplete="off"
+                    placeholder="Search Country...">
+                <div class="input-group-prepend">
+                    <button class="btn btn-success bg-green">
+                        Search </button>
+                </div>
+            </div>
         </div>
     </div>
 </div>
