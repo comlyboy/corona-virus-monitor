@@ -30,18 +30,15 @@ export class CountryComponent implements OnInit {
     public coronaService: CoronaService,
   ) { }
 
-  onSearchInput(value: string) {
-    // console.log(value);
-  };
-
 
   onCountryDetails(countryName: string) {
-    this.country = this.countries.find(o => o.country_name === countryName);
+    this.country = this.countries.find((item) => item.country_name === countryName);
 
     let deaths = Number(this.country.deaths.replace(/\,/g, ''));
     let cases = Number(this.country.cases.replace(/\,/g, ''));
     this.deathRatePercentage = deaths / cases * 100;
-  }
+  };
+
 
   initContents() {
     this.isLoading = true;
