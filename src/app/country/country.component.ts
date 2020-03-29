@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { ICountry } from '../interfaces/country';
-import { CoronaService } from '../shared/corona.service';
+import { CoronaService } from '../shared/service/corona.service';
 
 @Component({
   selector: 'app-country',

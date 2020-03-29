@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 
 import { Subject } from 'rxjs';
 
-import { ICountry } from '../interfaces/country';
+import { ICountry } from '../../interfaces/country';
 
 @Injectable({
   providedIn: 'root'

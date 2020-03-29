@@ -4,7 +4,7 @@ import { Subscription } from 'rxjs';
 import { Chart } from 'chart.js';
 
 import { ICountry } from '../interfaces/country';
-import { CoronaService } from '../shared/corona.service';
+import { CoronaService } from '../shared/service/corona.service';
 
 @Component({
   selector: 'app-home',
