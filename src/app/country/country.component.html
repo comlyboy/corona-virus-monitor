@@ -11,8 +11,8 @@
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                     <div class="h6 text-right mb-0 my-2">As at: <span class="text-green">
-                        {{ statistic_taken_at | date:'medium' }}</span>
-                </div>
+                            {{ statistic_taken_at | date:'medium' }}</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -24,17 +24,22 @@
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2" *ngFor="let country of countries">
             <div (click)="onCountryDetails(country.country_name)" data-toggle="modal" data-target="#exampleModalCenter"
-                class="card corona-card corona-border my-2 text-center">
-                <div class="card-body">
-                    <div class="h6 mb-0"> {{ country.country_name }}
+                class="card corona-card corona-border my-2">
+                <div class="card-body py-2">
+                    <div class="h4 text-secondary text-center mb-3"> {{ country.country_name }}
                     </div>
-                    <div class="h6 mb-0 text-green"> {{ country.cases }}
+                    <div class="h6"> Cases: <span class="text-primary">{{ country.cases }}</span>
+                    </div>
+                    <div class="h6">Deaths: <span class="text-danger">{{ country.deaths }}</span>
+                    </div>
+                    <div class="h6">Cures: <span class="text-green">{{ country.total_recovered }}</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
