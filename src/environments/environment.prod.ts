@@ -9,5 +9,5 @@ export const environment = {
     })
   },
   API_URL: 'https://coronavirus-monitor.p.rapidapi.com/',
-  API_URL2: 'https://https://corona.lmao.ninja/v2/historical'
+  API_URL2: 'https://corona.lmao.ninja/v2/'
 };

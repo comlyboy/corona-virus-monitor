@@ -63,8 +63,23 @@ export class HomeComponent implements OnInit {
   ) { }
 
   onDeathChart() {
-    this.viewMode = 'deathChart'
+    // this.coronaService.getHistoricalData()
+    //   .subscribe(historicalData => {
+    //     const died = historicalData.map((item) => item.timeline.deaths);
+    //     const cured = historicalData.map((item) => item.timeline.recovered);
+    //     const keys = Object.values(died)
 
+    //     const c = keys.map(parseFloat);
+    //     // died.forEach(element => {
+    //     //   const c = parseInt(element, 10)
+    //     // });
+
+    //     console.log(c);
+    //   });
+    this.viewMode = 'deathChart'
+    // setTimeout(() => {
+    //   this.renderChart();
+    // }, 1000);
   };
 
   onRecoverChart() {
@@ -173,9 +188,7 @@ export class HomeComponent implements OnInit {
         this.statistic_taken_at = customersData.taken_at;
         this.totalCountries = this.countries.length;
         this.summaryDatas(this.countries)
-        // setTimeout(() => {
-        //   this.renderChart();
-        // }, 1000);
+
         this.isLoading = false;
 
       })

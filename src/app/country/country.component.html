@@ -24,21 +24,21 @@
     <div class="row">
         <div class="col-sm-12 col-md-6 col-lg-3 col-xl-2" *ngFor="let country of countries">
             <div (click)="onCountryDetails(country.country_name)" data-toggle="modal" data-target="#exampleModalCenter"
-                class="card corona-card corona-border my-2">
+                class="card corona-card corona-border mt-2 mb-3">
                 <div class="card-header py-1">
                     <div class="h6 text-secondary text-center mb-0"> {{ country.country_name }}
                     </div>
                 </div>
                 <div class="card-body py-2 px-5">
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between mb-1">
                         <div class="text-small"> Cases: </div>
                         <div class="text-small text-primary">{{ country.cases }}</div>
                     </div>
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between mb-1">
                         <div class="text-small">Deaths: </div>
                         <div class="text-small text-danger">{{ country.deaths }}</div>
                     </div>
-                    <div class="d-flex justify-content-between">
+                    <div class="d-flex justify-content-between mb-1">
                         <div class="text-small">Cures: </div>
                         <div class="text-small text-green">{{ country.total_recovered }}</div>
                     </div>

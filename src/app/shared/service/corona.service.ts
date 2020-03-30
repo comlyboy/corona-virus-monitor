@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 
 import { Subject } from 'rxjs';
 
-import { ICountry } from '../../interfaces/country';
+import { ICountry, IHistoricalData, IHistoricalData2 } from '../../interfaces/country';
 
 @Injectable({
   providedIn: 'root'
@@ -52,26 +52,15 @@ export class CoronaService {
 
 
   // ================
-  private HistoricalDataUpdated = new Subject<{
-    countries: ICountry[]
-    taken_at: Date
-  }>();
+  // private historicalDataUpdated = new Subject<IHistoricalData>();
 
-  getHistoricalDataUpdateListener() {
-    return this.HistoricalDataUpdated.asObservable();
-  }
+  // getHistoricalDataUpdateListener() {
+  //   return this.historicalDataUpdated.asObservable();
+  // }
 
 
   getHistoricalData() {
-    this.http
-      .get(`${this.API.API_URL2}historical`, this.httpOptions)
-      .subscribe(HistoricalData => {
-        // this.countries = countriesData.countries_stat;
-        // this.countriesDataUpdated.next({
-        //   countries: [...this.countries],
-        //   taken_at: countriesData.statistic_taken_at
-        // });
-      });
+    return this.http.get<IHistoricalData2[]>(`${this.API.API_URL2}historical`);
   }
 
 

@@ -24,7 +24,7 @@ export interface IHistoricalData {
     }
 }
 
-export interface IHistoricalData {
+export interface IHistoricalData2 {
     country: string,
     province: string,
     timeline: {
