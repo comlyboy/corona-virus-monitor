@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
   countries: ICountry[] = [];
   statistic_taken_at: Date;
 
-  isLoading: boolean = true;
+  isLoading: boolean = false;
 
 
   // bar-chart options
