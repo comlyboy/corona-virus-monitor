@@ -27,11 +27,10 @@ import { environment } from '../environments/environment';
     BrowserAnimationsModule,
     HttpClientModule,
     NgxChartsModule,
-    // AvatarModule,
     NgCircleProgressModule.forRoot({
       // set defaults here
       clockwise: false,
-      titleFontSize: '30',
+      titleFontSize: '35',
       unitsFontSize: '30',
       animationDuration: 300
     }),

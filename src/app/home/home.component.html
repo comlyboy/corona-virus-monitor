@@ -1,5 +1,5 @@
 <div *ngIf="!isLoading" class="container-fluid mt-4">
-    <div class="card corona-card my-3">
+    <div class="card corona-card my-2">
         <div class="card-body p-3">
             <div class="row">
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
@@ -17,14 +17,14 @@
     </div>
 </div>
 
-<app-spinner *ngIf="isLoading"></app-spinner>
+<!-- <app-spinner *ngIf="isLoading"></app-spinner> -->
 
 
 <div *ngIf="!isLoading" class="container-fluid">
     <div class="row">
 
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card corona-card my-2">
+            <div class="card corona-card my-3">
                 <div class="card-body px-4 d-flex justify-content-between">
                     <div>
                         <div class="h3 text-primary">{{ totalCases | number }}</div>
@@ -37,7 +37,7 @@
         </div>
 
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card corona-card my-2">
+            <div class="card corona-card my-3">
                 <div class="card-body px-4 d-flex justify-content-between">
                     <div>
                         <div class="h3 text-green">{{ totalCures | number }}
@@ -52,7 +52,7 @@
         </div>
 
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card corona-card my-2">
+            <div class="card corona-card my-3">
                 <div class="card-body px-4 d-flex justify-content-between">
                     <div>
                         <div class="h3 text-danger">{{ totalDeaths | number }}</div>
@@ -66,7 +66,7 @@
         </div>
 
         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
-            <div class="card corona-card my-2">
+            <div class="card corona-card my-3">
                 <div class="card-body px-4 d-flex justify-content-between">
                     <div>
                         <div class="h3 text-warning">{{ totalCountries | number }}</div>
@@ -78,28 +78,24 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 
 
 
 <div *ngIf="!isLoading" class="container-fluid">
-    <div class="row">
-        <!-- <div class="col-sm-12 col-md-7 col-lg-8 col-xl-12">
-            <div class="card corona-card my-2">
-                <div class="card-body">
-                    <canvas #lineChart></canvas>
-                </div>
-            </div>
-        </div> -->
+    <div *ngIf="viewMode == 'all'" class="row">
+
         <div class="col-sm-12 col-md-5 col-lg-4 col-xl-4">
             <div class="card corona-card my-2">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="h5 mb-0">Recovery rate</div>
+                    <div (click)="onRecoverChart()" class="h5 mb-0 text-green pointer">
+                        <i class="far fa-chart-bar"></i>
+                    </div>
                 </div>
-                <div class="card-body pl-5 py-5">
-                    <circle-progress [percent]="recoveryRatePercentage" [radius]="95" [outerStrokeWidth]="25"
+                <div class="card-body d-flex justify-content-center">
+                    <circle-progress [percent]="recoveryRatePercentage" [radius]="90" [outerStrokeWidth]="25"
                         [toFixed]="2" [showSubtitle]="false" [space]="-25" [maxPercent]="100" [innerStrokeWidth]="25"
                         [outerStrokeColor]="'#12b886'" [titleColor]="'#12b886'" [unitsColor]="'#12b886'"
                         [innerStrokeColor]="'#edf1fa'" [animation]="true">
@@ -112,8 +108,8 @@
                 <div class="card-header">
                     <div class="h5 mb-0">Severe cases rate</div>
                 </div>
-                <div class="card-body pl-5 py-5">
-                    <circle-progress [percent]="severeRatePercentage" [radius]="95" [outerStrokeWidth]="25"
+                <div class="card-body d-flex justify-content-center">
+                    <circle-progress [percent]="severeRatePercentage" [radius]="90" [outerStrokeWidth]="25"
                         [toFixed]="2" [showSubtitle]="false" [space]="-25" [maxPercent]="100" [innerStrokeWidth]="25"
                         [outerStrokeColor]="'#4a6ee0'" [titleColor]="'#4a6ee0'" [unitsColor]="'#4a6ee0'"
                         [innerStrokeColor]="'#edf1fa'" [animation]="true">
@@ -123,15 +119,50 @@
         </div>
         <div class="col-sm-12 col-md-5 col-lg-4 col-xl-4">
             <div class="card corona-card my-2">
-                <div class="card-header">
+                <div class="card-header d-flex justify-content-between">
                     <div class="h5 mb-0">Death rate</div>
+                    <div (click)="onDeathChart()" class="h5 mb-0 text-danger pointer">
+                        <!-- <mat-icon>trending_up</mat-icon> -->
+                        <i class="far fa-chart-bar"></i>
+                    </div>
                 </div>
-                <div class="card-body pl-5 py-5">
-                    <circle-progress [percent]="deathRatePercentage" [radius]="95" [outerStrokeWidth]="25" [toFixed]="2"
+                <div class="card-body d-flex justify-content-center">
+                    <circle-progress [percent]="deathRatePercentage" [radius]="90" [outerStrokeWidth]="25" [toFixed]="2"
                         [showSubtitle]="false" [space]="-25" [maxPercent]="100" [innerStrokeWidth]="25"
                         [outerStrokeColor]="'#dc3545'" [titleColor]="'#dc3545'" [unitsColor]="'#dc3545'"
                         [innerStrokeColor]="'#edf1fa'" [animation]="true">
                     </circle-progress>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div *ngIf="viewMode == 'recoverChart'" class="col-sm-12 col-md-7 col-lg-8 col-xl-12">
+            <div class="card corona-card my-2">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="h5 mb-0 text-green">Recovery Chart</div>
+                    <div (click)="viewMode = 'all'" class="h5 mb-0 text-green pointer">
+                        <i class="fa fa-times"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas #lineChart></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="viewMode == 'deathChart'" class="col-sm-12 col-md-7 col-lg-8 col-xl-12">
+            <div class="card corona-card my-2">
+                <div class="card-header d-flex justify-content-between">
+                    <div class="h5 mb-0 text-danger">Death Chart</div>
+                    <div (click)="viewMode = 'all'" class="h5 mb-0 text-danger pointer">
+                        <i class="fa fa-times"></i>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas #lineChart></canvas>
                 </div>
             </div>
         </div>

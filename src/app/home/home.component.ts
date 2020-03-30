@@ -15,6 +15,8 @@ export class HomeComponent implements OnInit {
   @ViewChild('lineChart', { static: false }) lineChart: { nativeElement: any; };
   line: any;
 
+  viewMode = "all"
+
   countriesSub: Subscription;
 
   totalCases: number = 0;
@@ -32,7 +34,7 @@ export class HomeComponent implements OnInit {
   countries: ICountry[] = [];
   statistic_taken_at: Date;
 
-  isLoading: boolean = false;
+  isLoading: boolean = true;
 
 
   // bar-chart options
@@ -59,6 +61,15 @@ export class HomeComponent implements OnInit {
   constructor(
     public coronaService: CoronaService,
   ) { }
+
+  onDeathChart() {
+    this.viewMode = 'deathChart'
+
+  };
+
+  onRecoverChart() {
+    this.viewMode = 'recoverChart'
+  };
 
   renderChart() {
     const charrt = this.lineChart.nativeElement;

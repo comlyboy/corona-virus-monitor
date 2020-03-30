@@ -1,14 +1,19 @@
 # Coronavirus Monitor
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.7.
 
-This App provides Cases, recovery and death information coronavirus
+This App provides Cases, recovery and death information about COVID-19 virus
 
 Made possible by through api created by https://rapidapi.com/user/astsiatsko
 
 # api url
 https://rapidapi.com/astsiatsko/api/coronavirus-monitor
 
+https://https://corona.lmao.ninja/v2
+
+
+# project url
+https://covid19-global-data.netlify.com/
 
 
 

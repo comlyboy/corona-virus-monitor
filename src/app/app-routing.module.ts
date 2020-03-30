@@ -7,10 +7,10 @@ import { CountryComponent } from './country/country.component';
 
 const routes: Routes = [
 
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  
-  { path: 'dashboard', component: HomeComponent },
-  
+  { path: '', component: HomeComponent },
+
+  { path: 'dashboard', redirectTo: '', pathMatch: 'full' },
+
   { path: 'countries', component: CountryComponent },
 
 ];

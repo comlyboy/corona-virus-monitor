@@ -12,7 +12,7 @@ import { ICountry } from '../../interfaces/country';
 })
 export class CoronaService {
 
-  private API_URL = environment.API_URL;
+  private API = environment;
   httpOptions = environment.httpOptions;
 
   private countries: ICountry[] = [];
@@ -38,13 +38,39 @@ export class CoronaService {
       .get<{
         countries_stat: ICountry[];
         statistic_taken_at: Date
-      }>(`${this.API_URL}coronavirus/cases_by_country.php`, this.httpOptions)
+      }>(`${this.API.API_URL}coronavirus/cases_by_country.php`, this.httpOptions)
       .subscribe(countriesData => {
         this.countries = countriesData.countries_stat;
         this.countriesDataUpdated.next({
           countries: [...this.countries],
           taken_at: countriesData.statistic_taken_at
         });
+      });
+  };
+
+
+
+
+  // ================
+  private HistoricalDataUpdated = new Subject<{
+    countries: ICountry[]
+    taken_at: Date
+  }>();
+
+  getHistoricalDataUpdateListener() {
+    return this.HistoricalDataUpdated.asObservable();
+  }
+
+
+  getHistoricalData() {
+    this.http
+      .get(`${this.API.API_URL2}historical`, this.httpOptions)
+      .subscribe(HistoricalData => {
+        // this.countries = countriesData.countries_stat;
+        // this.countriesDataUpdated.next({
+        //   countries: [...this.countries],
+        //   taken_at: countriesData.statistic_taken_at
+        // });
       });
   }
 
