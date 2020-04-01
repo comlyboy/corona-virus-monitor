@@ -1,6 +1,6 @@
 {
-  "name": "coronavirus-monitor",
-  "short_name": "coronavirus-monitor",
+  "name": "Covid-19 global data",
+  "short_name": "Covid-19 global data",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
