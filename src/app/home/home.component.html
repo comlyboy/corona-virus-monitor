@@ -86,7 +86,7 @@
 <div *ngIf="!isLoading" class="container-fluid">
     <div *ngIf="viewMode == 'all'" class="row">
 
-        <div class="col-sm-12 col-md-5 col-lg-4 col-xl-4">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
             <div class="card corona-card my-2">
                 <div class="card-header d-flex justify-content-between px-4">
                     <div class="h5 mb-0">Recovery rate</div>
@@ -119,7 +119,7 @@
             </div>
         </div>
 
-        <div class="col-sm-12 col-md-5 col-lg-4 col-xl-4">
+        <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
             <div class="card corona-card my-2">
                 <div class="card-header d-flex justify-content-between px-4">
                     <div class="h5 mb-0">Death rate</div>
@@ -140,7 +140,7 @@
 
 
     <div class="row">
-        <div *ngIf="viewMode == 'recoverChart'" class="col-sm-12 col-md-7 col-lg-8 col-xl-12">
+        <div *ngIf="viewMode == 'recoverChart'" class="col-12">
             <div class="card corona-card my-2">
                 <div class="card-header d-flex justify-content-between px-5">
                     <div class="h5 mb-0 text-green">Recovery Chart</div>
@@ -155,7 +155,7 @@
             </div>
         </div>
 
-        <div *ngIf="viewMode == 'deathChart'" class="col-sm-12 col-md-7 col-lg-8 col-xl-12">
+        <div *ngIf="viewMode == 'deathChart'" class="col-12">
             <div class="card corona-card my-2">
                 <div class="card-header d-flex justify-content-between px-5">
                     <div class="h5 mb-0 text-danger">Death Chart</div>
