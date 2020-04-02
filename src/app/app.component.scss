@@ -13,3 +13,42 @@
     width: 100%;
     height: 3.6rem;
 }
+
+
+
+.sidebar-content {
+    position: relative;
+    overflow: auto;
+    height: 100% !important;
+    width: 150px !important;
+    background-color: #ffffff !important;
+}
+
+.sidebar a {
+    display: block;
+    padding: 17px 15px;
+    border-bottom: 1px solid rgb(231, 233, 238);
+    text-decoration: none;
+    color: #6c757d;
+}
+
+.current {
+    background-color: #f5f7fa !important;
+    color: #02b159 !important;
+    border-right: #02b159 solid 3px !important;
+}
+
+.sidebar a:hover {
+    color: #02b159;
+    text-decoration: none;
+}
+
+.sidebar li:last-child a {
+    border-bottom: none;
+}
+
+.extra:hover {
+    border-radius: 50% !important;
+    background-color: #edf1fa !important;
+    color: #02b159 !important;
+}
