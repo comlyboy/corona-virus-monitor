@@ -13,7 +13,7 @@ import { ICountry, IHistoricalData, IHistoricalData2 } from '../../interfaces/co
 export class CoronaService {
 
   private API = environment;
-  httpOptions = environment.httpOptions;
+  headers = environment;
 
   private countries: ICountry[] = [];
 
@@ -38,7 +38,7 @@ export class CoronaService {
       .get<{
         countries_stat: ICountry[];
         statistic_taken_at: Date
-      }>(`${this.API.API_URL}coronavirus/cases_by_country.php`, this.httpOptions)
+      }>(this.API.API_URL, this.headers.httpOptions)
       .subscribe(countriesData => {
         this.countries = countriesData.countries_stat;
         this.countriesDataUpdated.next({
@@ -46,7 +46,22 @@ export class CoronaService {
           taken_at: countriesData.statistic_taken_at
         });
       });
-  };
+  }
+
+
+
+  getCountries2() {
+    this.http
+      .get(this.API.API_URL2, this.headers.httpOptions2)
+      .subscribe(countriesData => {
+        console.log(countriesData);
+        // this.countries = countriesData.countries_stat;
+        // this.countriesDataUpdated.next({
+        //   countries: [...this.countries],
+        //   taken_at: countriesData.statistic_taken_at
+        // });
+      });
+  }
 
 
 
@@ -59,9 +74,9 @@ export class CoronaService {
   // }
 
 
-  getHistoricalData() {
-    return this.http.get<IHistoricalData2[]>(`${this.API.API_URL2}historical`);
-  }
+  // getHistoricalData(); {
+  //   return this.http.get<IHistoricalData2[]>(`${this.API.API_URL2}historical`);
+  // }
 
 
 }

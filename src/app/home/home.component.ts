@@ -15,26 +15,26 @@ export class HomeComponent implements OnInit {
   @ViewChild('lineChart', { static: false }) lineChart: { nativeElement: any; };
   line: any;
 
-  viewMode = "all"
+  viewMode = 'all';
 
   countriesSub: Subscription;
 
-  totalCases: number = 0;
-  totalCures: number = 0;
-  totalDeaths: number = 0;
-  totalCountries: number = 0;
+  totalCases = 0;
+  totalCures = 0;
+  totalDeaths = 0;
+  totalCountries = 0;
 
   countryNames: string[] = [];
   recoversVisual: number[] = [];
 
-  deathRatePercentage: number = 0;
-  recoveryRatePercentage: number = 0;
-  severeRatePercentage: number = 0;
+  deathRatePercentage = 0;
+  recoveryRatePercentage = 0;
+  severeRatePercentage = 0;
 
   countries: ICountry[] = [];
   statistic_taken_at: Date;
 
-  isLoading: boolean = false;
+  isLoading = false;
 
 
   // bar-chart options
@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit {
   viewCharts: any[] = [1100, 250];
   barPadding = 5;
   barPaddingChart = 8;
-  showDataLabel = true
+  showDataLabel = true;
   roundEdges = true;
   showXAxis = true;
   showYAxis = true;
@@ -53,7 +53,7 @@ export class HomeComponent implements OnInit {
   yAxisLabel = '';
   colorScheme = {
     domain: [
-      "#4a6ee0",
+      '#4a6ee0',
     ]
   };
 
@@ -76,19 +76,19 @@ export class HomeComponent implements OnInit {
 
     //     console.log(c);
     //   });
-    this.viewMode = 'deathChart'
+    this.viewMode = 'deathChart';
     // setTimeout(() => {
     //   this.renderChart();
     // }, 1000);
-  };
+  }
 
   onRecoverChart() {
-    this.viewMode = 'recoverChart'
-  };
+    this.viewMode = 'recoverChart';
+  }
 
   renderChart() {
     const charrt = this.lineChart.nativeElement;
-    charrt.height = 200
+    charrt.height = 200;
     this.line = new Chart(charrt, {
       type: 'bar',
       data: {
@@ -136,35 +136,35 @@ export class HomeComponent implements OnInit {
 
 
   summaryDatas(countryArray: ICountry[]) {
-    let allCases: number = 0;
-    let deaths: number = 0;
-    let cures: number = 0;
-    let severe: number = 0;
+    let allCases = 0;
+    let deaths = 0;
+    let cures = 0;
+    let severe = 0;
 
     countryArray.forEach(d => {
-      let convert = Number(d.cases.replace(/\,/g, ''));
-      allCases += convert
+      const convert = Number(d.cases.replace(/\,/g, ''));
+      allCases += convert;
       // a.push(convert)
     });
 
     countryArray.forEach(d => {
-      let convert = Number(d.total_recovered.replace(/\,/g, ''));
-      cures += convert
+      const convert = Number(d.total_recovered.replace(/\,/g, ''));
+      cures += convert;
     });
 
     countryArray.forEach(d => {
-      let convert = Number(d.deaths.replace(/\,/g, ''));
-      deaths += convert
+      const convert = Number(d.deaths.replace(/\,/g, ''));
+      deaths += convert;
     });
 
     countryArray.forEach(d => {
-      let convert = Number(d.serious_critical.replace(/\,/g, ''));
-      severe += convert
+      const convert = Number(d.serious_critical.replace(/\,/g, ''));
+      severe += convert;
     });
 
     this.totalCases = allCases;
-    this.totalCures = cures
-    this.totalDeaths = deaths
+    this.totalCures = cures;
+    this.totalDeaths = deaths;
 
 
     this.severeRatePercentage = severe / this.totalCases * 100;
@@ -182,16 +182,17 @@ export class HomeComponent implements OnInit {
   initContents() {
     this.isLoading = true;
     this.coronaService.getCountries();
+    this.coronaService.getCountries2();
     this.countriesSub = this.coronaService.getCountriesUpdateListener()
       .subscribe((customersData: { countries: ICountry[], taken_at: Date }) => {
         this.countries = customersData.countries;
         this.statistic_taken_at = customersData.taken_at;
         this.totalCountries = this.countries.length;
-        this.summaryDatas(this.countries)
+        this.summaryDatas(this.countries);
 
         this.isLoading = false;
 
-      })
+      });
 
   }
 

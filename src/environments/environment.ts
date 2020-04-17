@@ -8,12 +8,19 @@ export const environment = {
   production: false,
   httpOptions: {
     headers: new HttpHeaders({
-      "x-rapidapi-host": "coronavirus-monitor.p.rapidapi.com",
-      "x-rapidapi-key": "fbf1b04851mshc7ae899ebcfdeacp110ecajsncb3dcc3a0692"
+      'x-rapidapi-host': 'coronavirus-monitor.p.rapidapi.com',
+      'x-rapidapi-key': 'fbf1b04851mshc7ae899ebcfdeacp110ecajsncb3dcc3a0692'
     })
   },
-  API_URL: 'https://coronavirus-monitor.p.rapidapi.com/',
-  API_URL2: 'https://corona.lmao.ninja/v2/'
+  httpOptions2: {
+    headers: new HttpHeaders({
+      'x-rapidapi-host': 'covid19-data.p.rapidapi.com',
+      'x-rapidapi-key': 'fbf1b04851mshc7ae899ebcfdeacp110ecajsncb3dcc3a0692'
+    })
+  },
+  API_URL: 'https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php',
+  // API_URL2: 'https://corona.lmao.ninja/v2/'
+  API_URL2: 'https://covid19-data.p.rapidapi.com/geojson-af'
 };
 
 /*

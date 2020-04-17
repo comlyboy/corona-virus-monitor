@@ -10,26 +10,26 @@ export interface ICountry {
 }
 
 export interface IHistoricalData {
-    country: string,
-    province: string,
-    updatedAt: string,
+    country: string;
+    province: string;
+    updatedAt: string;
     stats: {
         confirmed: number,
         deaths: number,
         recovered: number
-    },
+    };
     coordinates: {
         latitude: number,
         longitude: number
-    }
+    };
 }
 
 export interface IHistoricalData2 {
-    country: string,
-    province: string,
+    country: string;
+    province: string;
     timeline: {
         cases: {},
         deaths: {},
         recovered: {}
-    }
+    };
 }
