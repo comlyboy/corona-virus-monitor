@@ -141,15 +141,6 @@ export class HomeComponent implements OnInit {
     let cures = 0;
     let severe = 0;
 
-    let newCountryArray
-
-    countryArray.map((item) => {
-      const d = item.total_recovered;
-      if (d === 'N/A') {
-        console.log(d)
-      }
-    });
-
 
     countryArray.forEach(d => {
       const convert = Number(d.cases.replace(/\,/g, ''));

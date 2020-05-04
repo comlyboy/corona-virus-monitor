@@ -51,18 +51,17 @@ export class CoronaService {
 
 
 
-  getCountries2() {
-    this.http
-      .get(this.API.API_URL2, this.headers.httpOptions2)
-      .subscribe(countriesData => {
-        console.log(countriesData);
-        // this.countries = countriesData.countries_stat;
-        // this.countriesDataUpdated.next({
-        //   countries: [...this.countries],
-        //   taken_at: countriesData.statistic_taken_at
-        // });
-      });
-  }
+  // getCountries2() {
+  //   this.http
+  //     .get(this.API.API_URL2, this.headers.httpOptions2)
+  //     .subscribe(countriesData => {
+  //       // this.countries = countriesData.countries_stat;
+  //       // this.countriesDataUpdated.next({
+  //       //   countries: [...this.countries],
+  //       //   taken_at: countriesData.statistic_taken_at
+  //       // });
+  //     });
+  // }
 
 
 
