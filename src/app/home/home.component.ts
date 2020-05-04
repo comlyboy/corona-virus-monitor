@@ -141,6 +141,16 @@ export class HomeComponent implements OnInit {
     let cures = 0;
     let severe = 0;
 
+    let newCountryArray
+
+    countryArray.map((item) => {
+      const d = item.total_recovered;
+      if (d === 'N/A') {
+        console.log(d)
+      }
+    });
+
+
     countryArray.forEach(d => {
       const convert = Number(d.cases.replace(/\,/g, ''));
       allCases += convert;
@@ -148,8 +158,9 @@ export class HomeComponent implements OnInit {
     });
 
     countryArray.forEach(d => {
-      const convert = Number(d.total_recovered.replace(/\,/g, ''));
-      cures += convert;
+      const convert1 = d.total_recovered.replace('N/A', '0');
+      const convert2 = Number(convert1.replace(/\,/g, ''));
+      cures += convert2;
     });
 
     countryArray.forEach(d => {
