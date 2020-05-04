@@ -40,7 +40,6 @@ export class CoronaService {
         statistic_taken_at: Date
       }>(this.API.API_URL, this.headers.httpOptions)
       .subscribe(countriesData => {
-        console.log(countriesData)
         this.countries = countriesData.countries_stat;
         this.countriesDataUpdated.next({
           countries: [...this.countries],

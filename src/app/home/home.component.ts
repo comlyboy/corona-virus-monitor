@@ -184,7 +184,7 @@ export class HomeComponent implements OnInit {
   initContents() {
     this.isLoading = true;
     this.coronaService.getCountries();
-    this.coronaService.getCountries2();
+    // this.coronaService.getCountries2();
     this.countriesSub = this.coronaService.getCountriesUpdateListener()
       .subscribe((customersData: { countries: ICountry[], taken_at: Date }) => {
         this.countries = customersData.countries;
