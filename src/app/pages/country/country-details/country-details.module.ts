@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { CountryDetailsRoutingModule } from './country-details-routing.module';
-import { CountryDetailsComponent } from './country-details.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+
+import { CountryDetailsRoutingModule } from './country-details-routing.module';
+import { CountryDetailsComponent } from './country-details.component';
 
 
 @NgModule({

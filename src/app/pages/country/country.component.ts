@@ -37,8 +37,8 @@ export class CountryComponent implements OnInit {
   onCountryDetails(countryName: string) {
     this.country = this.countries.find((item) => item.country_name === countryName);
     setTimeout(() => {
-      this.modalService.openCountryDetailsSheet(this.country);
-    }, 500);
+    }, 400);
+    this.modalService.openCountryDetailsSheet(this.country);
   }
 
 
@@ -47,7 +47,6 @@ export class CountryComponent implements OnInit {
     this.coronaService.getCountries();
     this.countriesSub = this.coronaService.getCountriesUpdateListener()
       .subscribe((countriesData: { countries: ICountry[], taken_at: Date }) => {
-        console.log(countriesData.countries)
         this.countries = countriesData.countries;
         this.statistic_taken_at = countriesData.taken_at;
         this.totalCountries = this.countries.length;

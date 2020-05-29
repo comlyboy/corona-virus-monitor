@@ -2,7 +2,7 @@ import { Component, OnInit, Inject, ChangeDetectorRef, OnDestroy } from '@angula
 
 import { MatBottomSheetRef, MAT_BOTTOM_SHEET_DATA } from '@angular/material/bottom-sheet';
 import { ICountry } from '../../../interfaces/country';
-import { CoronaService } from 'src/app/shared/service/corona.service';
+import { CountryComponent } from '../country.component';
 
 @Component({
   selector: 'app-country-details',
@@ -10,7 +10,7 @@ import { CoronaService } from 'src/app/shared/service/corona.service';
   styleUrls: ['./country-details.component.scss']
 })
 export class CountryDetailsComponent implements OnInit, OnDestroy {
-  country: ICountry;
+  country = this.data;
 
   totalCases = 0;
   totalCures = 0;
@@ -21,25 +21,27 @@ export class CountryDetailsComponent implements OnInit, OnDestroy {
   isLoading = false;
 
   constructor(
+    private readonly bottomSheetRef: MatBottomSheetRef<CountryComponent>,
     @Inject(MAT_BOTTOM_SHEET_DATA) private data: ICountry,
-    private readonly coronaService: CoronaService,
-    private changeDetectorRef: ChangeDetectorRef
+    private readonly changeDetectorRef: ChangeDetectorRef
   ) { }
+
+  onCloseBottomSheet(event: MouseEvent): void {
+    this.bottomSheetRef.dismiss();
+    event.preventDefault();
+  }
+
+
 
 
   initContents() {
-    this.isLoading = true;
-    this.country = this.data;
+    if (this.country) {
+      const deaths = Number(this.country.deaths.replace(/\,/g, ''));
+      const cases = Number(this.country.cases.replace(/\,/g, ''));
+      this.deathRatePercentage = deaths / cases * 100;
+    }
+    this.changeDetectorRef.detectChanges();
 
-    const deaths = Number(this.country.deaths.replace(/\,/g, ''));
-    const cases = Number(this.country.cases.replace(/\,/g, ''));
-    this.deathRatePercentage = deaths / cases * 100;
-    // this.transactionService.getTransactionDetails(this.transactionId)
-    //   .subscribe(data => {
-    //     this.country = data.transaction;
-
-    //     this.changeDetectorRef.detectChanges();
-    //   });
   }
 
   ngOnInit(): void {
