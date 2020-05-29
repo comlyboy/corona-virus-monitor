@@ -3,40 +3,25 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { NgCircleProgressModule } from 'ng-circle-progress';
-import { NgxChartsModule } from "@swimlane/ngx-charts";
-
-import { SidebarModule } from 'ng-sidebar';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { CountryComponent } from './country/country.component';
-import { SpinnerComponent } from './shared/components/spinner/spinner.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { CountryDetailsModule } from './pages/country/country-details/country-details.module';
+import { AngularMaterialModule } from './shared/module/material.module';
+
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent,
-    CountryComponent,
-    SpinnerComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    NgxChartsModule,
-    SidebarModule.forRoot(),
-    NgCircleProgressModule.forRoot({
-      // set defaults here
-      clockwise: false,
-      titleFontSize: '35',
-      unitsFontSize: '30',
-      animationDuration: 300
-    }),
+    CountryDetailsModule,
+    AngularMaterialModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [],

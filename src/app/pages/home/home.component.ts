@@ -3,8 +3,9 @@ import { Subscription } from 'rxjs';
 
 import { Chart } from 'chart.js';
 
-import { ICountry } from '../interfaces/country';
-import { CoronaService } from '../shared/service/corona.service';
+import { ICountry } from '../../interfaces/country';
+import { CoronaService } from '../../shared/service/corona.service';
+
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { CoronaService } from '../shared/service/corona.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+
   @ViewChild('lineChart', { static: false }) lineChart: { nativeElement: any; };
   line: any;
 
@@ -160,7 +162,8 @@ export class HomeComponent implements OnInit {
     });
 
     countryArray.forEach(d => {
-      const convert = Number(d.serious_critical.replace(/\,/g, ''));
+      const convert1 = d.serious_critical.replace('N/A', '0');
+      const convert = Number(convert1.replace(/\,/g, ''));
       severe += convert;
     });
 
