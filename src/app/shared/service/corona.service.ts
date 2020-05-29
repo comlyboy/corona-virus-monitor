@@ -50,17 +50,22 @@ export class CoronaService {
 
 
 
-  // getCountries2() {
-  //   this.http
-  //     .get(this.API.API_URL2, this.headers.httpOptions2)
-  //     .subscribe(countriesData => {
-  //       // this.countries = countriesData.countries_stat;
-  //       // this.countriesDataUpdated.next({
-  //       //   countries: [...this.countries],
-  //       //   taken_at: countriesData.statistic_taken_at
-  //       // });
-  //     });
-  // }
+  private countries2DataUpdated = new Subject<{
+    countries: ICountry[]
+    taken_at: Date
+  }>();
+
+  getCountries2UpdateListener() {
+    return this.countriesDataUpdated.asObservable();
+  }
+
+  getCountries2() {
+    this.http
+      .get(this.API.API_URL3)
+      .subscribe(countriesData => {
+        console.log(countriesData);
+      });
+  }
 
 
 

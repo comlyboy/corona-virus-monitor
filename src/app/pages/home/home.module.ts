@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { ChartsModule } from 'ng2-charts';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
@@ -22,6 +23,7 @@ import { SpinnerModule } from '../../shared/components/spinner/spinner.module';
       unitsFontSize: '30',
       animationDuration: 300
     }),
+    ChartsModule,
     SpinnerModule
   ]
 })

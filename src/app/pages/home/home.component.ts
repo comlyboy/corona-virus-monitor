@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 
-import { Chart } from 'chart.js';
+import { ChartOptions, ChartType, ChartDataSets } from 'chart.js';
+import * as pluginDataLabels from 'chartjs-plugin-datalabels';
+import { Label, Color } from 'ng2-charts';
 
 import { ICountry } from '../../interfaces/country';
 import { CoronaService } from '../../shared/service/corona.service';
@@ -38,103 +40,47 @@ export class HomeComponent implements OnInit {
 
   isLoading = false;
 
+  recorvers: any[];
 
-  // bar-chart options
-  country_cases_comparism: any[] = [];
-  viewCharts: any[] = [1100, 250];
-  barPadding = 5;
-  barPaddingChart = 8;
-  showDataLabel = true;
-  roundEdges = true;
-  showXAxis = true;
-  showYAxis = true;
-  showBarLegend = false;
-  showXAxisLabel = false;
-  xAxisLabel = '';
-  showYAxisLabel = false;
-  yAxisLabel = '';
-  colorScheme = {
-    domain: [
-      '#4a6ee0',
-    ]
+  // ==== Chart
+  public barChartOptions: ChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    scales: {
+      xAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }], yAxes: [{}]
+    },
+    plugins: {
+      datalabels: {
+        anchor: 'end',
+        align: 'start',
+        color: '#fff',
+      }
+    }
   };
+  public barChartLabels: Label[];
+  public barChartType: ChartType = 'horizontalBar';
+  public barChartLegend = true;
+  public barChartPlugins = [pluginDataLabels];
+  public barChartColors: Color[] = [
+    {
+      backgroundColor: '#6e8be6'
+    }
+  ];
+  public barChartData: ChartDataSets[] = [
+    {
+      data: [],
+      label: 'Transactions'
+    }
+  ];
 
 
   constructor(
     public coronaService: CoronaService,
   ) { }
-
-  onDeathChart() {
-    // this.coronaService.getHistoricalData()
-    //   .subscribe(historicalData => {
-    //     const died = historicalData.map((item) => item.timeline.deaths);
-    //     const cured = historicalData.map((item) => item.timeline.recovered);
-    //     const keys = Object.values(died)
-
-    //     const c = keys.map(parseFloat);
-    //     // died.forEach(element => {
-    //     //   const c = parseInt(element, 10)
-    //     // });
-
-    //     console.log(c);
-    //   });
-    this.viewMode = 'deathChart';
-    // setTimeout(() => {
-    //   this.renderChart();
-    // }, 1000);
-  }
-
-  onRecoverChart() {
-    this.viewMode = 'recoverChart';
-  }
-
-  renderChart() {
-    const charrt = this.lineChart.nativeElement;
-    charrt.height = 200;
-    this.line = new Chart(charrt, {
-      type: 'bar',
-      data: {
-        labels: this.countryNames,
-        datasets: [{
-          // label: 'Recovered',
-          label: 'Cases',
-          data: this.recoversVisual,
-          backgroundColor: '#12b886',
-          borderColor: '#12b886',
-          borderWidth: 1,
-          fill: false
-        },
-          // {
-          //   label: 'Dead',
-          //   data: this.deadVisual,
-          //   backgroundColor: '#dc3545',
-          //   borderColor: '#dc3545',
-          //   borderWidth: 1,
-          //   fill: false
-          // },
-          // {
-          //   label: 'Severe',
-          //   data: this.severe,
-          //   backgroundColor: '#ffc107',
-          //   borderColor: '#ffc107',
-          //   borderWidth: 1,
-          //   fill: false
-          // }
-        ],
-      },
-      options: {
-        scales: {
-          yAxes: [{
-            ticks: {
-              beginAtZero: true
-            }
-          }]
-        }
-      }
-    });
-  }
-
-
 
 
   summaryDatas(countryArray: ICountry[]) {
@@ -177,9 +123,9 @@ export class HomeComponent implements OnInit {
     this.recoveryRatePercentage = this.totalCures / this.totalCases * 100;
 
 
-    // this.countryNames = countryArray.map((item) => item.country_name);
+    this.countryNames = countryArray.map((item) => item.country_name);
     // this.recoversVisual = a;
-    // this.recorvers = countryArray.map((item) => item.total_recovered);
+    this.recorvers = countryArray.map((item) => item.total_recovered);
 
   }
 
@@ -196,9 +142,7 @@ export class HomeComponent implements OnInit {
         this.summaryDatas(this.countries);
 
         this.isLoading = false;
-
       });
-
   }
 
   ngOnInit() {

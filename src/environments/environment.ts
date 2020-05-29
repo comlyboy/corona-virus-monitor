@@ -5,7 +5,7 @@
 import { HttpHeaders } from '@angular/common/http';
 
 export const environment = {
-  production: false,
+  production: true,
   httpOptions: {
     headers: new HttpHeaders({
       'x-rapidapi-host': 'coronavirus-monitor.p.rapidapi.com',
@@ -19,8 +19,8 @@ export const environment = {
     })
   },
   API_URL: 'https://coronavirus-monitor.p.rapidapi.com/coronavirus/cases_by_country.php',
-  // API_URL2: 'https://corona.lmao.ninja/v2/'
-  API_URL2: 'https://covid19-data.p.rapidapi.com/geojson-af'
+  API_URL2: 'https://covid19-data.p.rapidapi.com/geojson-af',
+  API_URL3: 'https://disease.sh/v2/historical/all?lastdays=all'
 };
 
 /*

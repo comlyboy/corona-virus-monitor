@@ -52,7 +52,6 @@ export class CountryComponent implements OnInit {
         this.totalCountries = this.countries.length;
         this.isLoading = false;
       });
-
   }
 
   ngOnInit() {
