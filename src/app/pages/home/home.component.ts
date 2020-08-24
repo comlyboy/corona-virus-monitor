@@ -6,7 +6,7 @@ import * as pluginDataLabels from 'chartjs-plugin-datalabels';
 import { Label, Color } from 'ng2-charts';
 
 import { ICountry } from '../../interfaces/country';
-import { CoronaService } from '../../shared/service/corona.service';
+import { CoronaService } from 'src/app/service/corona.service';
 
 
 @Component({
@@ -34,6 +34,7 @@ export class HomeComponent implements OnInit {
   deathRatePercentage = 0;
   recoveryRatePercentage = 0;
   severeRatePercentage = 0;
+  sickRatePercentage = 0;
 
   countries: ICountry[] = [];
   statistic_taken_at: Date;
@@ -79,7 +80,7 @@ export class HomeComponent implements OnInit {
 
 
   constructor(
-    public coronaService: CoronaService,
+    public coronaService: CoronaService
   ) { }
 
 
@@ -88,6 +89,7 @@ export class HomeComponent implements OnInit {
     let deaths = 0;
     let cures = 0;
     let severe = 0;
+    let treatment = 0;
 
 
     countryArray.forEach(d => {
@@ -113,14 +115,25 @@ export class HomeComponent implements OnInit {
       severe += convert;
     });
 
+    countryArray.forEach(d => {
+      const convert1 = d.serious_critical.replace('N/A', '0');
+      const convert = Number(convert1.replace(/\,/g, ''));
+      severe += convert;
+    });
+
     this.totalCases = allCases;
     this.totalCures = cures;
     this.totalDeaths = deaths;
+
+    const deathNrecover = this.totalDeaths + this.totalCures;
+    const presentSick = this.totalCases - deathNrecover;
+
 
 
     this.severeRatePercentage = severe / this.totalCases * 100;
     this.deathRatePercentage = this.totalDeaths / this.totalCases * 100;
     this.recoveryRatePercentage = this.totalCures / this.totalCases * 100;
+    this.sickRatePercentage = presentSick / this.totalCases * 100;
 
 
     this.countryNames = countryArray.map((item) => item.country_name);

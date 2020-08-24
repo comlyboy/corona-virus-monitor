@@ -17,6 +17,10 @@ export class CountryDetailsComponent implements OnInit, OnDestroy {
   totalDeaths = 0;
 
   deathRatePercentage = 0;
+  recoveryRatePercentage = 0;
+  severeRatePercentage = 0;
+  sickRatePercentage = 0;
+  presentSick = 0;
 
   isLoading = false;
 
@@ -32,13 +36,24 @@ export class CountryDetailsComponent implements OnInit, OnDestroy {
   }
 
 
-
-
   initContents() {
     if (this.country) {
-      const deaths = Number(this.country.deaths.replace(/\,/g, ''));
+      const convertRecovery = this.country.total_recovered.replace('N/A', '0');
+      const convertDeath = this.country.deaths.replace('N/A', '0');
+      const convertsevere = this.country.serious_critical.replace('N/A', '0');
+
+      const deaths = Number(convertDeath.replace(/\,/g, ''));
+      const recoveries = Number(convertRecovery.replace(/\,/g, ''));
+      const severes = Number(convertsevere.replace(/\,/g, ''));
       const cases = Number(this.country.cases.replace(/\,/g, ''));
+
+      const deathNrecover = recoveries + deaths;
+
       this.deathRatePercentage = deaths / cases * 100;
+      this.recoveryRatePercentage = recoveries / cases * 100;
+      this.severeRatePercentage = severes / cases * 100;
+      this.presentSick = cases - deathNrecover;
+      this.sickRatePercentage = this.presentSick / cases * 100;
     }
     this.changeDetectorRef.detectChanges();
 

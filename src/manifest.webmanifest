@@ -1,8 +1,8 @@
 {
   "name": "Covid-19 global data",
   "short_name": "Covid-19 global data",
-  "theme_color": "#12b886",
-  "background_color": "#eef5f1",
+  "theme_color": "#a3b4b8",
+  "background_color": "#283e5d",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

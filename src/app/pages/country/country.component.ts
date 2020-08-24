@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 
 import { ICountry } from '../../interfaces/country';
-import { CoronaService } from '../../shared/service/corona.service';
-import { ModalService } from 'src/app/shared/service/modal.service';
+import { CoronaService } from '../../service/corona.service';
+import { ModalService } from '../../service/modal.service';
 
 @Component({
   selector: 'app-country',

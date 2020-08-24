@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatBottomSheet } from '@angular/material/bottom-sheet';
 
 import { CountryDetailsComponent } from 'src/app/pages/country/country-details/country-details.component';
-import { ICountry } from '../../interfaces/country';
+import { ICountry } from '../interfaces/country';
 
 @Injectable({
   providedIn: 'root'

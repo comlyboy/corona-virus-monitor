@@ -7,7 +7,7 @@ import { ChartsModule } from 'ng2-charts';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { SpinnerModule } from '../../shared/components/spinner/spinner.module';
+import { SpinnerModule } from 'src/app/interfaces/components/spinner/spinner.module';
 
 
 @NgModule({
