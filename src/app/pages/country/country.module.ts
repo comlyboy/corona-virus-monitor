@@ -7,7 +7,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { CountryRoutingModule } from './country-routing.module';
 import { CountryComponent } from './country.component';
 import { AngularMaterialModule } from '../../shared/module/material.module';
-import { SpinnerModule } from 'src/app/interfaces/components/spinner/spinner.module';
+import { SpinnerModule } from 'src/app/components/spinner/spinner.module';
 
 
 @NgModule({

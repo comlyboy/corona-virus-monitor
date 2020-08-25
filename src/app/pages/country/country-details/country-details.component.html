@@ -15,22 +15,29 @@
     </div>
 
     <div *ngIf="country" class="row">
+        <div class="col-3">
+
+        </div>
         <div class="col-6">
             <div class="card corona-card corona-border my-2 text-center">
-                <div class="card-body">
+                <div class="card-body text-center">
                     <div class="h5 text-primary">{{ country?.cases }}</div>
                     <div class="h6 mb-0">Total Cases</div>
                 </div>
             </div>
         </div>
+        <div class="col-3">
+
+        </div>
 
         <div class="col-6">
             <div class="card corona-card corona-border my-2">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div class="h5 text-green">{{ country?.total_recovered }}</div>
-                        <div class="small font-weight-bold text-green">{{ recoveryRatePercentage.toFixed(2) }}%</div>
+                <div class="card-header py-1">
+                    <div class="small font-weight-bold text-right text-green">{{ recoveryRatePercentage.toFixed(2) }}%
                     </div>
+                </div>
+                <div class="card-body text-center py-3">
+                    <div class="h5 text-green">{{ country?.total_recovered }}</div>
                     <div class="h6 mb-0">Total recovery</div>
                 </div>
             </div>
@@ -38,11 +45,12 @@
 
         <div class="col-6">
             <div class="card corona-card corona-border my-2">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div class="h5 text-danger">{{ country?.deaths }}</div>
-                        <div class="small font-weight-bold text-danger">{{ deathRatePercentage.toFixed(2) }}%</div>
+                <div class="card-header py-1">
+                    <div class="small font-weight-bold text-right text-danger">{{ deathRatePercentage.toFixed(2) }}%
                     </div>
+                </div>
+                <div class="card-body text-center py-3">
+                    <div class="h5 text-danger">{{ country?.deaths }}</div>
                     <div class="h6 mb-0">Total deaths</div>
                 </div>
             </div>
@@ -50,11 +58,12 @@
 
         <div class="col-6">
             <div class="card corona-card corona-border my-2">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div class="h5 text-warning">{{ country?.serious_critical }}</div>
-                        <div class="small font-weight-bold text-warning">{{ severeRatePercentage.toFixed(2) }}%</div>
+                <div class="card-header py-1">
+                    <div class="small font-weight-bold text-right text-warning">{{ severeRatePercentage.toFixed(2) }}%
                     </div>
+                </div>
+                <div class="card-body text-center py-3">
+                    <div class="h5 text-warning">{{ country?.serious_critical }}</div>
                     <div class="h6 mb-0">Total severe cases</div>
                 </div>
             </div>
@@ -62,11 +71,11 @@
 
         <div class="col-6">
             <div class="card corona-card corona-border my-2">
-                <div class="card-body">
-                    <div class="d-flex justify-content-between">
-                        <div class="h5 text-info">{{ presentSick | number }}</div>
-                        <div class="small font-weight-bold text-info">{{ sickRatePercentage.toFixed(2) }}%</div>
-                    </div>
+                <div class="card-header py-1">
+                    <div class="small font-weight-bold text-right text-info">{{ sickRatePercentage.toFixed(2) }}%</div>
+                </div>
+                <div class="card-body text-center py-3">
+                    <div class="h5 text-info">{{ presentSick | number }}</div>
                     <div class="h6 mb-0">Total presently sick </div>
                 </div>
             </div>
